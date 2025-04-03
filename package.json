@@ -1,0 +1,18 @@
+{
+  "name": "footballapp-nodejs",
+  "version": "1.0.0",
+  "description": "fantasy football stats app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0"
+  }
+}

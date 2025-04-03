@@ -1,0 +1,42 @@
+- De abea ce am terminat de setup data de baze, PostgreSQL pe SupaBase, unde m am folosit de python sa fac scrape la toate
+statisticile jucatorilor din Superliga Romaniei
+
+- SA MODIFIC .CSV SI SA CONVERTEZ MINUTELE DIN STRING DE FORMA '1,234' in INT de forma '1234'
+
+- Sa fac o clasa pentru care sa am un fel de interfata, exact cum e la Spring JPA, asa sa am si eu aici cu care
+  sa interactionez automat cu baza de date, sa faca Query dupa anumite sabloane, practic sa fac Spring JPA in JS
+
+- Eficientizare filtrare si Cautare dupa anumite Filtre, GraphQL? sau alte solutii, cea mai banala ar fi cu mai multe if-uri
+
+TODO:
+3) Permit metode de tip POST/PUT/DELETE, pentru jucatorii din baza de date, il caut dupa nume, echipa, il selectez, iar apoi
+il pot edita sau sterge, sau in alt caz sa adaug un jucator complet nou, daca apare pe parcurs (de ex. promovat din academie) fara
+sa mai fac iarasi scrape si upload la baza de date
+            ** Partea de editat jucatorii poate fi actualizata cu un script care ruleaza automat o data pe saptamana sa vada
+               daca apar jucatori noi, daca cumva se face scrape si difera nr. de linii, atunci proceseaza sa vada ce e nou si adauga
+               automat in baza de date sub forma de POST
+4) Dupa ce merg toate endpointurile, creez baza de date de tip USER, si adaug autentificare si conturi
+5) Adaug pentru un user rolul de ADMIN, iar pentru restul rolul de GUEST, iar cel cu ADMIN va avea role based auth pentru a folosi
+endpointul /admin/ de unde poate modifica jucatorii si sa faca operatiuni tip POST/PUT/DELETE
+
+6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,
+ca sa le vada statisticile pentru etapele 'viitoare'.
+
+7) Alt future update, cand se termina si se ajunge in playoff/playout, sa fac un scrape diferit la acele statistici, si sa modific 
+db cu inca 2 tabele pentru ele si jucatori cu statistici pentru playoff/playout ca sa se vada si datele astea acolo.
+
+8) De facut un tabel PUNCTE unde stochez cate puncte valoreaza fiecare stat in parte: gol = 6p, cartonas rosu = -2p, si asa mai 
+departe, raportat la fiecare pozitie si tot asa.
+
+9) Apoi mai adaug o coloana la toti jucatorii, pe care o calculez raportat la tabelul PUNCTE, si dau display in ea punctajul aferent,
+care in mod normal se actualizeaza la fiecare saptamana.
+
+10) Frontend -> cat mai basic, poze cu fiecare echipa din Superliga, si filtrare asemanator cu Premier League Fantasy ca sa nu fie 
+probleme, foarte basic, dar functional. La fiecare call din frontend, in functie de ce apelez, o sa dau GET la baza de date din 
+PostgreSQL
+
+FINAL: Deploy pe vercel la toata aplicatia, complet functionala.
+ALTERNATIV: Constructie backend si in Spring Boot, sa am o varianta cu Express JS, si una cu Java, Spring Boot
+
+
+********GITIGNORE pt .env si altele
