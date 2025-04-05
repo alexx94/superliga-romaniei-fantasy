@@ -8,6 +8,19 @@ statisticile jucatorilor din Superliga Romaniei
 
 - Eficientizare filtrare si Cautare dupa anumite Filtre, GraphQL? sau alte solutii, cea mai banala ar fi cu mai multe if-uri
 
+@ZIUA 2 - 05/04/2025
+  Am terminat in Supabase de initializat user_roles si am facut astfel incat fiecare user nou sa fie asociat cu un rol 'guest'.
+  Mai departe voi creea un singur user cu rol 'admin', si acela va putea sa faca post/put/delete pentru entry-urile din tabelul
+  superliga_ro cu jucatorii, restul vor putea doar sa vizualizeze.
+  - Voi restrictiona vizualizarea, metoda GET, doar pentru cei logati
+
+@ZIUA 2.5-3 - 06/04/2025 (seara intre ziua 2 - 3)
+  Am terminat de creeat endpointul /auth/signup/ si am verificat si functinoeaza perfect, trimite confirmare creare cont pe email
+  si dupa confirmare, creeaza si un nou entry in tabelul user_roles, deci si acolo merge totul perfect. 
+  - Urmeaza endpointul /auth/login/ cu JWT si apoi sa fac middleware pentru verificare autentificare pe baza tokenului si 
+    sa includa tokenul rolul utilizatorului pentru a securiza mai departe celelalte endpointuri, si in final sa creez acele 
+    endpointuri ramase
+
 TODO:
 3) Permit metode de tip POST/PUT/DELETE, pentru jucatorii din baza de date, il caut dupa nume, echipa, il selectez, iar apoi
 il pot edita sau sterge, sau in alt caz sa adaug un jucator complet nou, daca apare pe parcurs (de ex. promovat din academie) fara
@@ -15,9 +28,6 @@ sa mai fac iarasi scrape si upload la baza de date
             ** Partea de editat jucatorii poate fi actualizata cu un script care ruleaza automat o data pe saptamana sa vada
                daca apar jucatori noi, daca cumva se face scrape si difera nr. de linii, atunci proceseaza sa vada ce e nou si adauga
                automat in baza de date sub forma de POST
-4) Dupa ce merg toate endpointurile, creez baza de date de tip USER, si adaug autentificare si conturi
-5) Adaug pentru un user rolul de ADMIN, iar pentru restul rolul de GUEST, iar cel cu ADMIN va avea role based auth pentru a folosi
-endpointul /admin/ de unde poate modifica jucatorii si sa faca operatiuni tip POST/PUT/DELETE
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,
 ca sa le vada statisticile pentru etapele 'viitoare'.
