@@ -21,13 +21,28 @@ statisticile jucatorilor din Superliga Romaniei
     sa includa tokenul rolul utilizatorului pentru a securiza mai departe celelalte endpointuri, si in final sa creez acele 
     endpointuri ramase
 
+@ZIUA 3 - 06/04/2025 (ziua)
+  Intai am modificat user_roles, coloana row sa nu fie tip text, ci sa fie un custom type app_role care are enum('admin' sau 'guest'),
+  unde 'guest' este default.
+
+  Dupa asta am creeat acel hook de care ziceam mai jos ca trebuie facut, iar acum o sa modific modul in care stochez client side
+  tokenul, ca sa fie in httpOnly cookies, in loc de localstorage ca sa fie mai secure pe partea clientului si sa nu fie probleme,
+  si in final ii dam test la tot ce am creeat cu login.
+
+  Am implementat endpointul /login/ si am adaugat si un Test pentru tabelul 'user_roles' ca sa verific daca am setat corect RLS policy
+  si am modificat ce nu mergea pe partea de RLS, plus am rezolvat toate 'warnings' din Supabase legate de securitate.
+
+  Am inclus cu success 'user_role' ca claim in token, care este stocat httpOnly, samesite si tot ce trebuie in cookies, si in final am
+  atribuit un cont de admin, cu care voi lucra in continuare ca sa utilizez metode de tip POST/PUT/DELETE
+  - Data viitoare de facut middleware ce restrictioneaza anumite operatii doar pentru admini, folosind tokenul stocat in cookies
+
 TODO:
 3) Permit metode de tip POST/PUT/DELETE, pentru jucatorii din baza de date, il caut dupa nume, echipa, il selectez, iar apoi
 il pot edita sau sterge, sau in alt caz sa adaug un jucator complet nou, daca apare pe parcurs (de ex. promovat din academie) fara
 sa mai fac iarasi scrape si upload la baza de date
             ** Partea de editat jucatorii poate fi actualizata cu un script care ruleaza automat o data pe saptamana sa vada
                daca apar jucatori noi, daca cumva se face scrape si difera nr. de linii, atunci proceseaza sa vada ce e nou si adauga
-               automat in baza de date sub forma de POST
+               automat in baza de date sub forma de POST  
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,
 ca sa le vada statisticile pentru etapele 'viitoare'.
@@ -44,6 +59,13 @@ care in mod normal se actualizeaza la fiecare saptamana.
 10) Frontend -> cat mai basic, poze cu fiecare echipa din Superliga, si filtrare asemanator cu Premier League Fantasy ca sa nu fie 
 probleme, foarte basic, dar functional. La fiecare call din frontend, in functie de ce apelez, o sa dau GET la baza de date din 
 PostgreSQL
+
+11) Sanitize input from users to further prevent SQL injection and add a test for that
+
+12) Adaugare rol de 'player' care se joaca fantasy, si el are niste permisiuni in plus fata de utilizatorii tip 'guest', pentru a adauga la one's to watch jucatorii din Superliga, de a juca efectiv fantasy etc.
+
+13) check input sent to user, to see if its valid to proceed, for ex. calling /login/ without an actual body, shouldn't even
+go further and just redirect to the error page. Same for other similar functionalities.
 
 FINAL: Deploy pe vercel la toata aplicatia, complet functionala.
 ALTERNATIV: Constructie backend si in Spring Boot, sa am o varianta cu Express JS, si una cu Java, Spring Boot

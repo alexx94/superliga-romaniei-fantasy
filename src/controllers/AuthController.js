@@ -32,6 +32,38 @@ export const authController = {
             message: 'User registered successfully',
             data: data.user
         })
+    },
+
+    async login(req, res) {
+        const { email, password } = req.body;    
+        
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: 'Email and password are required'
+            });
+        }
+
+        const { data, error } = await authService.login(email, password);
+
+        if (error) {
+            return res.status(400).json({
+                success: false,
+                message: error.message
+            });
+        }
+
+        // only JWT that expires in 1h, no refresh token for now
+        const access_token = data.session.access_token;
+        
+        res.cookie('sb-jwt', access_token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // right now its false cause  there's no production yet
+            sameSite: 'Strict',
+            maxAge: 60 * 60 * 1000
+        });
+
+        return res.status(200).json({ user: data.user });
     }
 };
 

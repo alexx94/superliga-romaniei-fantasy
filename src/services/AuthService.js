@@ -1,6 +1,6 @@
 import supabase from '../config/supabase.js';
 
-export const  authService = {
+export const authService = {
     /**
      * Register a new user in Supabase 
      * @param {string} email - User's email
@@ -16,10 +16,16 @@ export const  authService = {
         });
 
         return { data, error };
-    }
+    },
 
-    // TODO: login function, and make sure to include in token the user role to reduce requests to db and speed
-    // TODO: stocare token in cookies (httpOnly) si samesite strict si toate nebuniile
+    async login(email, password) {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        });
+        
+        return { data, error };
+    }   
 };
 
 export default authService;
