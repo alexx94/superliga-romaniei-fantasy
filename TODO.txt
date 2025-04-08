@@ -36,6 +36,15 @@ statisticile jucatorilor din Superliga Romaniei
   atribuit un cont de admin, cu care voi lucra in continuare ca sa utilizez metode de tip POST/PUT/DELETE
   - Data viitoare de facut middleware ce restrictioneaza anumite operatii doar pentru admini, folosind tokenul stocat in cookies
 
+@ZIUA 4 - 08/04/2025
+  Am facut un middleware care verifica daca user-ul care face request-ul este sau nu authorized in functie de rolul pe care il are.
+  Pentru aceasta am facut un jwtService unde procesez tokenul si extrag informatii din el, apoi authMiddleware care verifica
+  daca cookies contine un jwt, si daca da il verifica daca este valid pentru request, iar apoi la final verifica daca se regaseste
+  in claims si rolul corespunzator.
+
+  Am facut un test cu care am verificat si facut debug, iar apoi am aplicat pentru ruta /players/ acest middleware si totul 
+  functioneaza fara probleme.
+  - Data viitoare de facut si celelalte operatii POST/PUT/DELETE pentru auth role = admin, iar in final un frontend.
 TODO:
 3) Permit metode de tip POST/PUT/DELETE, pentru jucatorii din baza de date, il caut dupa nume, echipa, il selectez, iar apoi
 il pot edita sau sterge, sau in alt caz sa adaug un jucator complet nou, daca apare pe parcurs (de ex. promovat din academie) fara

@@ -1,8 +1,10 @@
 import dotenv from 'dotenv';
 import express from 'express';
+import cookieParser from 'cookie-parser';
 //CORS doar daca frontend face request la API de pe un alt domeniu
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 //TODO: Global error handler for all routes later on
 
