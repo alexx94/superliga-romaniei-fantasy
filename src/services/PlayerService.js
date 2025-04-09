@@ -25,6 +25,10 @@ const playerService = {
 
     async getPlayersByTeamAndPosition(team, position) {
         return await playerRepository.findPlayersByTeamAndPosition(team, position);
+    },
+
+    async addPlayer(player) {
+        return await playerRepository.save(player);
     }
 };
 

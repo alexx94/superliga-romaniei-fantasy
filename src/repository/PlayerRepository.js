@@ -54,11 +54,39 @@ const playerRepository = {
             .eq('team', team)
             .eq('position', position);
         return superliga_ro;
-    }
+    },
 
     //TODO: Adding other functions to INSERT, UPDATE, DELETE players, which will be used by auth users with admin role
     //      only after verification by the backend that they have admin role, otherwise you can't perform those actions,
     //      or even access the /admin/ route in frontent, restricting entire use
+    //TODO: UPSERT, if i wish to include in bulk multiple players later on, maybe via a file too etc.
+    async save(player) {
+        console.log(player);
+        let { data, error} = await supabase
+            .from(playerTable)
+            .insert([
+                {
+                    player: player.player,
+                    team: player.team,
+                    position: player.position,        
+                    age: player.age,
+                    games: player.games,
+                    games_starts: player.games_starts,
+                    minutes: player.minutes,
+                    goals: player.goals,
+                    assists: player.assists,
+                    goals_pens: player.goals_pens,
+                    pens_made: player.pens_made,
+                    cards_yellow: player.cards_yellow,
+                    cards_red: player.cards_red,
+                    nation: player.nation
+                }
+            ])
+            .select();
+        
+        console.log('DATA: ', data);
+        return {data, error};
+    }
 };
 
 export default playerRepository;

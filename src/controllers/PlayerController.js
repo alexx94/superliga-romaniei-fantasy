@@ -29,9 +29,26 @@ export const playerController = {
                 message: 'No players found matching the criteria.'
             })
         }
+    },
+
+    async addPlayer(req, res) {
+        const playerDTO = req.body;
+        const {data, error} = await playerService.addPlayer(playerDTO);
+        if (data) {
+            return res.status(201).json({
+                message: 'Player added successfully.',
+                data: data
+            })
+        } else {
+            return res.status(400).json({
+                message: 'Failed to add player.',
+                error: error
+            })
+        }
     }
 
-    // TODO: Creating for POST, PUT, DELETE the requests
+    // TODO: Creating for PUT, DELETE the requests
+
 };
 
 export default playerController;

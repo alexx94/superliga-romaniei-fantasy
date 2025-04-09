@@ -45,6 +45,10 @@ statisticile jucatorilor din Superliga Romaniei
   Am facut un test cu care am verificat si facut debug, iar apoi am aplicat pentru ruta /players/ acest middleware si totul 
   functioneaza fara probleme.
   - Data viitoare de facut si celelalte operatii POST/PUT/DELETE pentru auth role = admin, iar in final un frontend.
+
+@ZIUA 5 - 09/04/2025
+  De implementat POST method cu auth pt admin
+
 TODO:
 3) Permit metode de tip POST/PUT/DELETE, pentru jucatorii din baza de date, il caut dupa nume, echipa, il selectez, iar apoi
 il pot edita sau sterge, sau in alt caz sa adaug un jucator complet nou, daca apare pe parcurs (de ex. promovat din academie) fara
