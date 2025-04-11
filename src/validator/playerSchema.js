@@ -38,7 +38,7 @@ const playerSchema = Joi.object({
         .pattern(new RegExp(`^(${VALID_POSITIONS.join('|')})(,(${VALID_POSITIONS.join('|')}))*$`))
         .optional(),
 
-    age: Joi.number().integer().min(16).max(40).optional(),
+    age: Joi.number().integer().min(16).max(40).required(),
     games: Joi.number().integer().min(0).optional(),
     games_starts: Joi.number().integer().min(0).optional(),
     minutes: Joi.number().integer().min(0).optional(),

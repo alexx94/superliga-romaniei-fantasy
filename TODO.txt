@@ -47,7 +47,16 @@ statisticile jucatorilor din Superliga Romaniei
   - Data viitoare de facut si celelalte operatii POST/PUT/DELETE pentru auth role = admin, iar in final un frontend.
 
 @ZIUA 5 - 09/04/2025
-  De implementat POST method cu auth pt admin
+  Am implementat POST pentru un nou jucator in baza de date, doar pentru cei cu rol 'admin'. Am adaugat un middleware care verifica
+  inputul de tip 'player' care va urma sa fie procesat in backend, astfel incat sa fie unul valid si corespunzator formatului din 
+  baza de date.
+  - Data viitoare de facut PUT/DELETE, similar cu ceea ce am facut azi, si frontend.
+
+@ZIUA 6 - 11/04/2025
+  Am implementat PUT pentru a modifica jucatorul, am modificat putin si baza de date si constrangerile pentru chei semantice ca sa 
+  includa Nume*Echipa*Varsta.
+  - Data viitoare DELETE, si frontend. Plus sa ma ocup candva si de /signup/ sa analizeze log-ul din Supabase mai bine, si sa 
+  returneze mesajul respectiv, de ex. email duplicat nu il returneaza.
 
 TODO:
 3) Permit metode de tip POST/PUT/DELETE, pentru jucatorii din baza de date, il caut dupa nume, echipa, il selectez, iar apoi
@@ -73,12 +82,14 @@ care in mod normal se actualizeaza la fiecare saptamana.
 probleme, foarte basic, dar functional. La fiecare call din frontend, in functie de ce apelez, o sa dau GET la baza de date din 
 PostgreSQL
 
-11) Sanitize input from users to further prevent SQL injection and add a test for that
-
 12) Adaugare rol de 'player' care se joaca fantasy, si el are niste permisiuni in plus fata de utilizatorii tip 'guest', pentru a adauga la one's to watch jucatorii din Superliga, de a juca efectiv fantasy etc.
 
 13) check input sent to user, to see if its valid to proceed, for ex. calling /login/ without an actual body, shouldn't even
 go further and just redirect to the error page. Same for other similar functionalities.
+
+14) BUG TO FIX: If i have duplicate email and try to sign up, it doesnt go through to create a new account, but instead of getting 
+an error or a message in my request, I get success 200, but in the logs of the API endpoint to singup it doesnt actually go through,
+so I have to handle this by error handling this and return a specific message, instead of 200.
 
 FINAL: Deploy pe vercel la toata aplicatia, complet functionala.
 ALTERNATIV: Constructie backend si in Spring Boot, sa am o varianta cu Express JS, si una cu Java, Spring Boot

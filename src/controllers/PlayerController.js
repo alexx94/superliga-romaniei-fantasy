@@ -3,10 +3,12 @@ import playerService from "../services/PlayerService.js";
 // TODO: A cleaner approach to filtering searches by different criterias
 export const playerController = {
     async getPlayers(req, res) {
-        const { team, name, position, nation} = req.query;
+        const { id, team, name, position, nation} = req.query;
         let players = [];
 
-        if (name) {
+        if (id) {
+            players = await playerService.getPlayerById(id);
+        } else if (name) {
             players = await playerService.getPlayerByName(name);
         } else if (team && position) {
             players = await playerService.getPlayersByTeamAndPosition(team, position); 
@@ -45,9 +47,27 @@ export const playerController = {
                 error: error
             })
         }
+    },
+
+    async updatePlayer(req, res) {
+        const updatedPlayerDTO = req.body;
+        const playerId = req.params.id;
+
+        const { data, error} = await playerService.updatePlayer(playerId, updatedPlayerDTO);
+        if (data) {
+            return res.status(200).json({
+                message: 'Player updated successfully.',
+                data: data
+            })
+        } else {
+            return res.status(400).json({
+                message: 'Failed to add player.',
+                error: error
+            })
+        }
     }
 
-    // TODO: Creating for PUT, DELETE the requests
+    // TODO: Creating for DELETE the requests
 
 };
 

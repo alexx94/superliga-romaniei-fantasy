@@ -7,6 +7,10 @@ const playerService = {
         return await playerRepository.findAll();
     },
 
+    async getPlayerById(id) {
+        return await playerRepository.findById(id);
+    },
+
     async getPlayerByName(name) {
         return await playerRepository.findPlayerByName(name);
     },
@@ -29,6 +33,15 @@ const playerService = {
 
     async addPlayer(player) {
         return await playerRepository.save(player);
+    },
+
+    async updatePlayer(id, updatedPlayer) {
+        const existingPlayer = await playerRepository.findById(id);
+
+        if (existingPlayer) {
+            return await playerRepository.update(id, updatedPlayer);
+        }
+        return null;
     }
 };
 

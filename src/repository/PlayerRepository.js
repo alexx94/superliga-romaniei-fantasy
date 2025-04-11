@@ -15,11 +15,28 @@ const playerRepository = {
         return superliga_ro;
     },
 
+    async findById(id) {
+        let { data: superliga_ro, error} = await supabase
+            .from(playerTable)
+            .select()
+            .eq('id', id);
+        return superliga_ro;
+    },
+
     async findPlayerByName(name) {
         let { data: superliga_ro, error} = await supabase
             .from(playerTable)
             .select()
             .eq('player', name);
+        return superliga_ro;
+    },
+
+    async findByNameAndTeam(name, team) {
+        let { data: superliga_ro, error} = await supabase
+            .from(playerTable)
+            .select()
+            .eq('player', name)
+            .eq('team', team);
         return superliga_ro;
     },
 
@@ -56,10 +73,6 @@ const playerRepository = {
         return superliga_ro;
     },
 
-    //TODO: Adding other functions to INSERT, UPDATE, DELETE players, which will be used by auth users with admin role
-    //      only after verification by the backend that they have admin role, otherwise you can't perform those actions,
-    //      or even access the /admin/ route in frontent, restricting entire use
-    //TODO: UPSERT, if i wish to include in bulk multiple players later on, maybe via a file too etc.
     async save(player) {
         console.log(player);
         let { data, error} = await supabase
@@ -84,9 +97,23 @@ const playerRepository = {
             ])
             .select();
         
-        console.log('DATA: ', data);
+        console.log('Created player: ', data);
+        return {data, error};
+    },
+
+    async update(id, updatedPlayer) {
+        let { data, error } = await supabase
+            .from(playerTable)
+            .update(updatedPlayer)
+            .eq('id', id)
+            .select();
+        
+        console.log('Updated Player: ', data);
         return {data, error};
     }
+
+
+    // TODO: Delete player methods
 };
 
 export default playerRepository;
