@@ -10,5 +10,6 @@ const router = express.Router();
 router.get('/players', authorizeRoles(['admin', 'guest']), playerController.getPlayers);
 router.post('/players', authorizeRoles(['admin']), validatePlayerRequest, playerController.addPlayer);
 router.put('/players/:id', authorizeRoles(['admin']), validatePlayerRequest, playerController.updatePlayer);
+router.delete('/players/:id', authorizeRoles(['admin']), playerController.deletePlayer);
 
 export default router;

@@ -38,10 +38,19 @@ const playerService = {
     async updatePlayer(id, updatedPlayer) {
         const existingPlayer = await playerRepository.findById(id);
 
-        if (existingPlayer) {
-            return await playerRepository.update(id, updatedPlayer);
+        if (Object.keys(existingPlayer).length > 0) {
+            return await playerRepository.updateById(id, updatedPlayer);
         }
-        return null;
+        return {data: null, error: 'Player not found.'};
+    },
+
+    async deletePlayer(id) {
+        const player = await playerRepository.findById(id);
+
+        if (Object.keys(player).length > 0) {
+            return await playerRepository.deleteById(id);
+        }
+        return {data: null, error: 'Player not found.'};
     }
 };
 

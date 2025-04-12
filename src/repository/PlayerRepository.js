@@ -101,7 +101,7 @@ const playerRepository = {
         return {data, error};
     },
 
-    async update(id, updatedPlayer) {
+    async updateById(id, updatedPlayer) {
         let { data, error } = await supabase
             .from(playerTable)
             .update(updatedPlayer)
@@ -110,10 +110,19 @@ const playerRepository = {
         
         console.log('Updated Player: ', data);
         return {data, error};
+    },
+
+    async deleteById(id) {
+        let { data, error } = await supabase
+            .from(playerTable)
+            .delete()
+            .eq('id', id)
+            .select();
+        
+        console.log('Deleted Player: ', data);
+        return {data, error};
     }
 
-
-    // TODO: Delete player methods
 };
 
 export default playerRepository;

@@ -61,13 +61,27 @@ export const playerController = {
             })
         } else {
             return res.status(400).json({
-                message: 'Failed to add player.',
+                message: 'Failed to update player.',
+                error: error
+            })
+        }
+    },
+
+    async deletePlayer(req, res) {
+        const playerId = req.params.id;
+        const { data, error} = await playerService.deletePlayer(playerId);
+        if (data) {
+            return res.status(200).json({
+                message: 'Player deleted successfully.',
+                data: data
+            })
+        } else {
+            return res.status(400).json({
+                message: 'Failed to delete player.',
                 error: error
             })
         }
     }
-
-    // TODO: Creating for DELETE the requests
 
 };
 

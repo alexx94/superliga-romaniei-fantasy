@@ -57,14 +57,19 @@ statisticile jucatorilor din Superliga Romaniei
   includa Nume*Echipa*Varsta.
   - Data viitoare DELETE, si frontend. Plus sa ma ocup candva si de /signup/ sa analizeze log-ul din Supabase mai bine, si sa 
   returneze mesajul respectiv, de ex. email duplicat nu il returneaza.
+  - Pentru functia save(player) din playerRepository, cand dau insert s-ar putea sa mearga direct insert la obiectul player,
+  fara sa mai scriu fiecare bucatica in parte din obiectul json, avand in vedere ca sunt validate inainte de middleware si sunt bune.
+   Deci, as putea sa sterg asta de acolo, si sa arate mai curat codul meu
+
+@ZIUA 7 - 12/04/2025
+  Am terminat si DELETE de facut, am rezolvat si un bug la PUT de care nu stiam ieri, in care returna ca 'data' un obiect non null,
+  in cazul in care id-ul nu exista, dar Object.key(player).length era = 0 in acel caz, si a trebuit sa modific cu asta if statementul,
+  ca sa mearga fara buguri, pt ca dadea mereu response 200 OK chiar si daca nu era gasit id-ul. Deci am rezolvat si asta si merge bine
+  - Am terminat oficial Backendul, urmeaza frontend si sa rezolv pe Supabase acel lucru la signup, dar asta la final ca nu e complex.
+  - Aplicatia finala o sa o fac initial fara pagina de Signup in productie, si o sa dau cateva conturi mockup pt useri sa testeze 
+  aplicatia.
 
 TODO:
-3) Permit metode de tip POST/PUT/DELETE, pentru jucatorii din baza de date, il caut dupa nume, echipa, il selectez, iar apoi
-il pot edita sau sterge, sau in alt caz sa adaug un jucator complet nou, daca apare pe parcurs (de ex. promovat din academie) fara
-sa mai fac iarasi scrape si upload la baza de date
-            ** Partea de editat jucatorii poate fi actualizata cu un script care ruleaza automat o data pe saptamana sa vada
-               daca apar jucatori noi, daca cumva se face scrape si difera nr. de linii, atunci proceseaza sa vada ce e nou si adauga
-               automat in baza de date sub forma de POST  
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,
 ca sa le vada statisticile pentru etapele 'viitoare'.
