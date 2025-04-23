@@ -69,6 +69,11 @@ statisticile jucatorilor din Superliga Romaniei
   - Aplicatia finala o sa o fac initial fara pagina de Signup in productie, si o sa dau cateva conturi mockup pt useri sa testeze 
   aplicatia.
 
+@ZIUA 8 - 23/04/2025
+  Am facut putin frontend, am facut setup la React si m am jucat putin cu el, inca mai am de invatat, dar am reusit sa fac rutele
+  pentru paginile din frontend si un pic din Sidebar
+  - Urmeaza de actualizat designul si stilizat totul putin mai mult, si de facut restul de endpointuri, apoi conectarea cu Backend
+
 TODO:
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,
