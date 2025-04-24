@@ -74,6 +74,16 @@ statisticile jucatorilor din Superliga Romaniei
   pentru paginile din frontend si un pic din Sidebar
   - Urmeaza de actualizat designul si stilizat totul putin mai mult, si de facut restul de endpointuri, apoi conectarea cu Backend
 
+@ZIUA 9 - 24 spre 25/04/2025
+  Am terminat siebarul in React cu putin CSS, arata frumos, animatie pentru iconite, design placut. Am facut versiune responsive 
+  si pentru mobil, cu hamburger in dreapta sus.
+  Am facut si pagina /search care functioneaza perfect, returneaza jucatorii intr-un tabel, si voi refolosi componenta aceasta si
+  pentru cautarea in functie de echipa, pe care o voi face putin mai diferit, voi avea si filtre dupa pozitie, numar goluri etc.
+  - Urmeaza de facut tabelul returnat la search sa fie responsive pentru mobil, deci sa fac un fel de ajustare ca sa incapa
+  statsurile importante pe ecranul mobil, sa fie UX placut.
+  - Apoi pagina de /teams unde cauti dupa echipe, unde o sa pun pozele echipelor si poate si pagina de login tot maine, sa fie 
+  totul cat de cat rapid si sa termin cu asta
+
 TODO:
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,

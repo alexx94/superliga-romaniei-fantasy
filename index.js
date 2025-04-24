@@ -1,10 +1,21 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
+
 //CORS doar daca frontend face request la API de pe un alt domeniu
+const FRONTEND_URL = process.env.FRONTEND_URL;
+const corsOptions = {
+    origin: FRONTEND_URL, // domeniul de CORS
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+};
+
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors(corsOptions));
 
 //TODO: Global error handler for all routes later on
 
