@@ -76,13 +76,15 @@ statisticile jucatorilor din Superliga Romaniei
 
 @ZIUA 9 - 24 spre 25/04/2025
   Am terminat siebarul in React cu putin CSS, arata frumos, animatie pentru iconite, design placut. Am facut versiune responsive 
-  si pentru mobil, cu hamburger in dreapta sus.
+  si pentru mobil, cu hamburger in dreapta sus, CORS Config pentru backend ca sa ma lase sa apelez frontendul.
   Am facut si pagina /search care functioneaza perfect, returneaza jucatorii intr-un tabel, si voi refolosi componenta aceasta si
   pentru cautarea in functie de echipa, pe care o voi face putin mai diferit, voi avea si filtre dupa pozitie, numar goluri etc.
   - Urmeaza de facut tabelul returnat la search sa fie responsive pentru mobil, deci sa fac un fel de ajustare ca sa incapa
   statsurile importante pe ecranul mobil, sa fie UX placut.
   - Apoi pagina de /teams unde cauti dupa echipe, unde o sa pun pozele echipelor si poate si pagina de login tot maine, sa fie 
   totul cat de cat rapid si sa termin cu asta
+  - DE FACUT IN BACKEND, Search filter doar dupa parti din nume, adica in loc sa caut 'Octavian Popescu', sa pot cauta doar 'Octavian'
+  si sa returneze mai multe valori, pentru o experienta mai placuta a utilizatorului
 
 TODO:
 
@@ -110,6 +112,10 @@ go further and just redirect to the error page. Same for other similar functiona
 14) BUG TO FIX: If i have duplicate email and try to sign up, it doesnt go through to create a new account, but instead of getting 
 an error or a message in my request, I get success 200, but in the logs of the API endpoint to singup it doesnt actually go through,
 so I have to handle this by error handling this and return a specific message, instead of 200.
+
+15) Guess the Player Based on Emojis Game, online pvp game, no account needed, play with your friends live, store in a game specific
+db the players and a few different emoji lists for all, and have like 10 emojis, around 15-20s each to guess, and count points at the 
+end and see who wins.
 
 FINAL: Deploy pe vercel la toata aplicatia, complet functionala.
 ALTERNATIV: Constructie backend si in Spring Boot, sa am o varianta cu Express JS, si una cu Java, Spring Boot
