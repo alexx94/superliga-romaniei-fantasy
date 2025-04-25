@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import InputField from '../../components/InputField';
+import { login } from '../../api/AuthApi';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,8 @@ const Login = () => {
   });
 
   const [errors, setErrors] = useState({});
+
+  const navigate = useNavigate();
 
   // Sa fac mai modular, sa separ toate astea intr-un fisier separat, utils, helpers, etc.
   const validate = () => {
@@ -32,6 +36,7 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    setErrors({});
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -39,9 +44,16 @@ const Login = () => {
       return;
     }
 
-    // TODO: CALL API TO LOGIN, FROM BACKEND
-
-    console.log('Submitted:', formData);
+    const user = await login(formData);
+    if (user === undefined) {
+      setErrors({ ...errors, email: 'Invalid email or password' });
+      return;
+    } else {
+      // TODO: Add transition to search page, and also modify search page
+      // a little bit to include what the search page is all about and other stuff
+      console.log('Login succesful!', user);
+      navigate('/search');
+    }
   }
 
 

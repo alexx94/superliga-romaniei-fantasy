@@ -86,6 +86,11 @@ statisticile jucatorilor din Superliga Romaniei
   - DE FACUT IN BACKEND, Search filter doar dupa parti din nume, adica in loc sa caut 'Octavian Popescu', sa pot cauta doar 'Octavian'
   si sa returneze mai multe valori, pentru o experienta mai placuta a utilizatorului
 
+@ZIUA 10 - 25/04/2025
+  Am terminat pagina de login, merge bine si interactioneaza cum trebuie cu Supabase, salveaza JWT in cookies asa cum ar trebui.
+  - Urmeaza pagina de cautat dupa echipe, si de editat jucatorii (pagina accesibila doar de rol = admin)
+  - De adaugat cateva lucruri pe partea de frontend pentru UX mai bun
+
 TODO:
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,
