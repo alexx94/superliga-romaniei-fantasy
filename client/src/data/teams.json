@@ -1,0 +1,68 @@
+{
+    "teams": [
+        {
+            "name": "Botosani",
+            "logo": "/teams/Botosani.png"
+        },
+        {
+            "name":"CFR-Cluj",
+            "logo": "/teams/CFR-Cluj.png"
+        },
+        {
+            "name": "FCSB",
+            "logo": "/teams/FCSB.png"
+        },
+        {
+            "name": "Farul-Constanta",
+            "logo": "/teams/Farul-Constanta.png"
+        },
+        {
+            "name": "SCM-Gloria-Buzau",
+            "logo": "/teams/SCM-Gloria-Buzau.png"
+        },
+        {
+            "name": "Hermannstadt",
+            "logo": "/teams/Hermannstadt.png"
+        },
+        {
+            "name": "Rapid-Bucuresti",
+            "logo": "/teams/Rapid-Bucuresti.png"
+        },
+        {
+            "name": "UTA-Arad",
+            "logo": "/teams/UTA-Arad.png"
+        },
+        {
+            "name": "Universitatea-Cluj",
+            "logo": "/teams/Universitatea-Cluj.png"
+        },
+        {
+            "name": "Politehnica-Iasi",
+            "logo": "/teams/Politehnica-Iasi.png"
+        },
+        {
+            "name": "Otelul-Galati",
+            "logo": "/teams/Otelul-Galati.png"
+        },
+        {
+            "name": "Dinamo-Bucuresti",
+            "logo": "/teams/Dinamo-Bucuresti.png"
+        },
+        {
+            "name": "Unirea-Slobozia",
+            "logo": "/teams/Unirea-Slobozia.png"
+        },
+        {
+            "name": "Petrolul-Ploiesti",
+            "logo": "/teams/Petrolul-Ploiesti.png"
+        },
+        {
+            "name": "CS-Universitatea-Craiova",
+            "logo": "/teams/CS-Universitatea-Craiova.png"
+        },
+        {
+            "name": "Sepsi-Sfantu-Gheorghe",
+            "logo": "/teams/Sepsi-Sfantu-Gheorghe.png"
+        }
+    ]
+}

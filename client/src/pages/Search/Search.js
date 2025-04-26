@@ -32,7 +32,7 @@ const Search = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-900 to-blue-500 px-4">
       <form
         onSubmit={handleSearch}
         className="flex items-center bg-white rounded-full shadow-md p-2 w-full max-w-md mb-6"

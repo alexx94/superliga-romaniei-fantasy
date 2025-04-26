@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login/Login';
 import Search from './pages/Search/Search';
+import Teams from './pages/Teams/Teams';
 import Edit from './pages/Edit';
 import Layout from './components/Layout';
 
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/teams" element={<Teams />} />
           <Route path="/edit" element={<Edit />} />
         </Route>
       </Routes>
