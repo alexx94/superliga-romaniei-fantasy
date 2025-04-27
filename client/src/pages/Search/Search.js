@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getPlayers } from '../../api/PlayerApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import PlayersTable from '../../components/Players/PlayersTable';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -53,36 +54,7 @@ const Search = () => {
 
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
-      {players.length > 0 && (
-        <table className="table-auto bg-white rounded-xl shadow-lg">
-          <thead>
-            <tr className="bg-blue-500 text-white">
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Team</th>
-              <th className="px-4 py-2">Position</th>
-              <th className="px-4 py-2">Nation</th>
-              <th className="px-4 py-2">Age</th>
-              <th className="px-4 py-2">Games</th>
-              <th className="px-4 py-2">Goals</th>
-              <th className="px-4 py-2">Assists</th>
-            </tr>
-          </thead>
-          <tbody>
-            {players.map((player) => (
-              <tr key={player.id} className="text-center border-b">
-                <td className="px-4 py-2">{player.player}</td>
-                <td className="px-4 py-2">{player.team}</td>
-                <td className="px-4 py-2">{player.position}</td>
-                <td className="px-4 py-2">{player.nation}</td>
-                <td className="px-4 py-2">{player.age}</td>
-                <td className="px-4 py-2">{player.games}</td>
-                <td className="px-4 py-2">{player.goals}</td>
-                <td className="px-4 py-2">{player.assists}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      <PlayersTable players = {players} />
     </div>
   );
 

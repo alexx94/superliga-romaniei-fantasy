@@ -91,6 +91,10 @@ statisticile jucatorilor din Superliga Romaniei
   - Urmeaza pagina de cautat dupa echipe, si de editat jucatorii (pagina accesibila doar de rol = admin)
   - De adaugat cateva lucruri pe partea de frontend pentru UX mai bun
 
+@ZIUA 11 - 28/04/2025
+  Am terminat pagina teams.
+  - Urmeaza pagina de editat jucatorii, si gata.
+
 TODO:
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,
