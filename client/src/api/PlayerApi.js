@@ -22,3 +22,21 @@ export const getPlayers = async (params = {}) => {
         return [];
     }
 }
+
+export const createPlayer = async (params = {}) => {
+    console.log('CREARE JUCATOR NOU');
+
+    // TODO - POST
+}
+
+export const updatePlayer = async (params = {}) => {
+    console.log('UPDATING JUCATOR...');
+
+    // TODO - Select id, update
+}
+
+export const deletePlayer = async (params = {}) => {
+    console.log('BASE_URL:', BASE_URL);
+
+    // TODO - Select id, delete
+}

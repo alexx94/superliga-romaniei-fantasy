@@ -95,6 +95,13 @@ statisticile jucatorilor din Superliga Romaniei
   Am terminat pagina teams.
   - Urmeaza pagina de editat jucatorii, si gata.
 
+@ZIUA 12 - 28/04/2025
+  Am terminat pagina Edit, am modificat tabelul sa fie mobile responsive si am invatat mai multe pe partea de frontend.
+  Am facut codul mai modular, impartit pe mai multe componente ca sa fie reutilizabil.
+  - Butonul View Players merge, mai am de adaugat listener pentru Add, Edit si Delete, si pentru astea 3 sa fac cate o 
+  componenta tip popup window care sa imi afiseze ce vreau sa editez la jucator, ce informatii are noul jucator adaugat si
+  in final la delete sa fie Yes/No, si sa apelez endpointurile din backend ca sa prelucreze informatia
+
 TODO:
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,
@@ -125,6 +132,11 @@ so I have to handle this by error handling this and return a specific message, i
 15) Guess the Player Based on Emojis Game, online pvp game, no account needed, play with your friends live, store in a game specific
 db the players and a few different emoji lists for all, and have like 10 emojis, around 15-20s each to guess, and count points at the 
 end and see who wins.
+
+16) The Way I set up endpoints should be more clear, for example retrieving all players should be different,
+then the endpoint to get custom players with criterias, maybe /player/criteria and then check params there, because this way,
+I keep calling the entire database, even if i dont want to when searching for certain players in the edit players section of the page.
+Not major, but better overall and less stress on my database.
 
 FINAL: Deploy pe vercel la toata aplicatia, complet functionala.
 ALTERNATIV: Constructie backend si in Spring Boot, sa am o varianta cu Express JS, si una cu Java, Spring Boot
