@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PlayerFormModal from './PlayerFormModal';
 
-const PlayersTable = ({ players, addActions = 'false' }) => {
+const PlayersTable = ({ players, addActions = 'false', onEdit }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -96,7 +99,9 @@ const PlayersTable = ({ players, addActions = 'false' }) => {
                 <td className={`px-4 py-2 ${isMobile ? 'block text-left' : ''}`}>
                   {isMobile && <span className="font-bold">Actions: </span>}
                   <div className="flex flex-wrap gap-2 mt-2">
-                    <button className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm">
+                    <button className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm"
+                      onClick={() => onEdit(player)}
+                    >
                       Edit
                     </button>
                     <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">

@@ -23,15 +23,27 @@ export const getPlayers = async (params = {}) => {
     }
 }
 
-export const createPlayer = async (params = {}) => {
+export const createPlayer = async (playerData) => {
     console.log('CREARE JUCATOR NOU');
-
+    try {
+        const res = await api.post('/api/players', playerData);
+        return res.data.data || null;
+    } catch (err) {
+        console.error('Create player error: ', err.response?.data || err.message);
+        return {};
+    }
     // TODO - POST
 }
 
-export const updatePlayer = async (params = {}) => {
+export const updatePlayer = async (playerId, playerData) => {
     console.log('UPDATING JUCATOR...');
-
+    try {
+        const res = await api.put(`/api/players/${playerId}`, playerData);
+        return res.data.data || null;
+    } catch (err) {
+        console.error('Update player error: ', err.response?.data || err.message);
+        return {};
+    }
     // TODO - Select id, update
 }
 
