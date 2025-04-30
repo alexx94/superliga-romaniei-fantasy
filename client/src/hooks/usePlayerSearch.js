@@ -38,6 +38,7 @@ export const usePlayerSearch = () => {
         setSearchTerm,
         handleSearch,
         players,
+        setPlayers,
         error,
         loading,
       };

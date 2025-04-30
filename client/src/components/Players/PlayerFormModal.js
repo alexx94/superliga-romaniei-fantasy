@@ -14,8 +14,6 @@ export default function PlayerFormModal({ isOpen, onClose, player, onSave }) {
         error,
     } = usePlayerForm({ player, onClose, onSave });
 
-    console.log('GICUUUU') ;
-
     return (
         <Dialog open={isOpen} onClose={handleCancel} className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <Dialog.Panel className="bg-white p-6 rounded-xl w-[90%] max-w-md space-y-4">

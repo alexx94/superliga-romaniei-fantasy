@@ -102,6 +102,19 @@ statisticile jucatorilor din Superliga Romaniei
   componenta tip popup window care sa imi afiseze ce vreau sa editez la jucator, ce informatii are noul jucator adaugat si
   in final la delete sa fie Yes/No, si sa apelez endpointurile din backend ca sa prelucreze informatia
 
+@ZIUA 13 - 29/04/2025
+  Un form popup reusable pentru Add/Edit Player, mai trebuie modificat un mic bug pentru functionalitatea de edit, unde in loc
+  sa apeleze Update Player, imi apeleaza Create Player.
+  - TODO: Popup pentru Delete cu Yes/No si deploy
+
+@ZIUA 14 - 30/04/2025
+  Am terminat de reparat niste buguri la Add/Edit, am optimizat formul, modificat in timp real tabelul, si am creeat Confirm Dialog
+  pentru functia de Delete cu Yes/No, astfel incat sa fie utilizabil
+  - TODO: Conecteaza Delete -> Yes la backend unde sa trimit player.id ca argument
+  - TODO: Deploy
+  - Refactor la niste componente, cea de Edit si putin pe partea de form pentru player, ca sa fie mai simple de citit,
+    mai reutilizabile etc.
+
 TODO:
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,

@@ -27,7 +27,7 @@ const playerSchema = Joi.object({
     // I can customize this in the future, as I will improve my app and my database to be more complex
     player: Joi.string()
         .min(2)
-        .pattern(/^[a-zA-Z\s]+$/)
+        .pattern(/^[a-zA-Z\u00C0-\u00FF\u015F\u0219\u021B\u0103\u02C7\s'-]+$/)
         .required(),
     
     team: Joi.string()

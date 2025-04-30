@@ -11,7 +11,11 @@ const playerRepository = {
     async findAll() {
         let { data: superliga_ro, error } = await supabase
             .from(playerTable)
-            .select();
+            .select()
+            .order('id');
+        if (error) {
+            console.error('Error fetching data: ', error);
+        }
         return superliga_ro;
     },
 
@@ -96,6 +100,9 @@ const playerRepository = {
                 }
             ])
             .select();
+        if (error) {
+            console.error('Error fetching data: ', error);
+        }
         
         console.log('Created player: ', data);
         return {data, error};
@@ -107,7 +114,9 @@ const playerRepository = {
             .update(updatedPlayer)
             .eq('id', id)
             .select();
-        
+        if (error) {
+            console.error('Error fetching data: ', error);
+        }
         console.log('Updated Player: ', data);
         return {data, error};
     },
@@ -118,7 +127,10 @@ const playerRepository = {
             .delete()
             .eq('id', id)
             .select();
-        
+
+        if (error) {
+            console.error('Error fetching data: ', error);
+        }
         console.log('Deleted Player: ', data);
         return {data, error};
     }

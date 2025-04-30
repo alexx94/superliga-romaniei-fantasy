@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PlayerFormModal from './PlayerFormModal';
 
-const PlayersTable = ({ players, addActions = 'false', onEdit }) => {
+const PlayersTable = ({ players, addActions = 'false', onEdit, onDelete }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -39,7 +39,7 @@ const PlayersTable = ({ players, addActions = 'false', onEdit }) => {
 
         {/* Table Body */}
         <tbody className={`${isMobile ? 'flex flex-col gap-4 p-2' : ''} font-semibold`}>
-          {players.map((player) => (
+          {players.map((player, index) => (
             <tr
               key={player.id}
               className={`text-black ${isMobile ? 'bg-white rounded-lg shadow-md p-4 text-left flex flex-col' : 'text-center'}`}
@@ -100,11 +100,13 @@ const PlayersTable = ({ players, addActions = 'false', onEdit }) => {
                   {isMobile && <span className="font-bold">Actions: </span>}
                   <div className="flex flex-wrap gap-2 mt-2">
                     <button className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm"
-                      onClick={() => onEdit(player)}
+                      onClick={() => onEdit(player, index)}
                     >
                       Edit
                     </button>
-                    <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">
+                    <button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
+                      onClick={() => onDelete(player)}
+                    >
                       Delete
                     </button>
                   </div>

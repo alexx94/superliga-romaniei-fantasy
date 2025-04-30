@@ -19,8 +19,6 @@ export default function usePlayerForm({ player, onClose, onSave }) {
     cards_red: '',
   });
 
-  console.log(player);
-
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -39,22 +37,46 @@ export default function usePlayerForm({ player, onClose, onSave }) {
     }
 
     // Convert number fields to integers
-    const cleanedData = { ...formData };
+    let isChanged = false; 
+    const cleanedData = {};
     const numericKeys = ['age', 'games', 'game_starts', 'minutes', 'goals', 'assists', 'goals_pens', 'pens_made', 'cards_yellow', 'cards_red'];
-    Object.keys(cleanedData).forEach((key) => {
-        if (cleanedData[key] === '' || cleanedData[key] === null) {
-          delete cleanedData[key];  // Delete empty string fields
-        } else if (numericKeys.includes(key)) {
-          cleanedData[key] = parseInt(cleanedData[key]);  // Parse numeric fields
-        }
-      });
+    const requiredKeys = ['player', 'team', 'age'];
+    for (const key in  formData) {
+      if (key === 'id') continue; // exclude id from the form
+
+      let originalValue;
+      if (player) originalValue = player[key] ?? '';
+      else originalValue = '';
+      const currentValue = formData[key];
+
+      if (currentValue === '' || currentValue === null) continue;
+
+      if (requiredKeys.includes(key)) {
+        cleanedData[key] = numericKeys.includes(key) ? parseInt(currentValue) : currentValue;
+        if (`${currentValue}` !== `${originalValue}`) isChanged = true;
+        continue;
+      }
+
+      if (`${currentValue}` !== `${originalValue}`) {
+        cleanedData[key] = numericKeys.includes(key) ? parseInt(currentValue) : currentValue;
+        isChanged = true;
+      }
+      
+    }
 
     try {
       setError(null);
-      const data = player
-      console.log(data)
-        ? await updatePlayer(player.id, cleanedData)
-        : await createPlayer(cleanedData);
+      console.log("hello", cleanedData);
+      let data;
+      if (player == null) data = await createPlayer(cleanedData);
+      else {
+        if (!isChanged) {
+          onClose();
+          return;
+        }
+        data = await updatePlayer(player.id, cleanedData);
+
+      }
 
       onSave(data);
       onClose();

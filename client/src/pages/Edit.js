@@ -5,21 +5,39 @@ import { usePlayerSearch } from '../hooks/usePlayerSearch';
 import { CustomButton } from '../components/Buttons/CustomButton';
 import PlayersTable from '../components/Players/PlayersTable';
 import PlayerFormModal from '../components/Players/PlayerFormModal';
+import ConfirmDialog from '../components/Dialogs/ConfirmDialog';
 
 const Edit = () => {
-  const { searchTerm, setSearchTerm, handleSearch, handleViewPlayers, players } = usePlayerSearch();
-
+  const { searchTerm, setSearchTerm, handleSearch, players, setPlayers } = usePlayerSearch();
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [playerToDelete, setPlayerToDelete] = useState(null);
 
   const handleAdd = () => {
     setSelectedPlayer(null);
     setShowModal(true);
   };
 
-  const handleEdit = (player) => {
+  const handleEdit = (player, index) => {
+    console.log('Editing player at index: ', index);
     setSelectedPlayer(player);
-    setShowModal(true)
+    setShowModal(true);
+  }
+
+  const handleDelete = (player) => {
+    setPlayerToDelete(player);
+    setDeleteModalOpen(true);
+  }
+
+  const handleConfirmDelete = () => {
+    console.log(`Player ${playerToDelete?.player} deleted`);
+    // TODO: Trigger delete api and provide player.id;
+    setDeleteModalOpen(false);
+  }
+
+  const handleCancelDelete = () => {
+    setDeleteModalOpen(false);
   }
 
   return (
@@ -47,7 +65,7 @@ const Edit = () => {
 
       {/* Player Table custom with Action column for edit/delete */}
       <div className='flex justify-center ml-4'>
-        <PlayersTable players={players} addActions='true' onEdit={handleEdit} />
+        <PlayersTable players={players} addActions='true' onEdit={handleEdit} onDelete={handleDelete} />
       </div>
 
       {showModal && (
@@ -56,12 +74,37 @@ const Edit = () => {
           onClose={() => setShowModal(false)}
           player={selectedPlayer}
           onSave={(savedPlayer) => {
-            // TODO: I can update table to include this too
+            setPlayers((prevPlayers) => {
+              let isNewPlayer = true;
+              const updatedPlayers = prevPlayers.map((p) => {
+                if (p.id === savedPlayer[0].id) {
+                  isNewPlayer = false;
+                  return savedPlayer[0];
+                }
+                return p;
+              });
+
+            
+              if (isNewPlayer) updatedPlayers.push(savedPlayer[0]);
+              return updatedPlayers;
+              
+            });
             console.log('Saved player:', savedPlayer);
             setShowModal(false);
           }}
         />
       )}
+
+      <ConfirmDialog 
+        isOpen={isDeleteModalOpen}
+        onClose={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        message={`Are you sure you want to delete ${playerToDelete?.player}?`}
+        confirmText="Yes"
+        cancelText="No"
+
+        //TODO: Handle after confirmation, to also include table update, just as we did previously on form
+      />
 
     </div>
   );
