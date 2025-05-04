@@ -6,7 +6,7 @@
   "homepage": "./",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build --prefix client",
+    "start": "node api/index.js",
     "deploy": "npm run build && npm run start"
   },
   "keywords": [],
