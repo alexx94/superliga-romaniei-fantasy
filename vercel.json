@@ -3,10 +3,7 @@
     "builds": [
       {
         "src": "client/package.json",
-        "use": "@vercel/static-build",
-        "config": {
-          "distDir": "client/build"
-        }
+        "use": "@vercel/react"
       },
       {
         "src": "api/index.js",
@@ -16,7 +13,11 @@
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/client/build/index.html"
+        "dest": "/client/build/$1"
+      },
+      {
+        "src": "/api/(.*)",
+        "dest": "/api/$1"
       }
     ]
   }
