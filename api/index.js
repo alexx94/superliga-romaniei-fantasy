@@ -7,7 +7,7 @@ import cors from 'cors';
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const corsOptions = {
     origin: FRONTEND_URL, // domeniul de CORS
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
 };
