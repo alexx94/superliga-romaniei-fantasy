@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build --prefix client", 
+    "build": "npm run build --prefix client",
     "deploy": "npm run build && npm run start"
   },
   "keywords": [],
@@ -24,5 +24,8 @@
     "path": "^0.12.7",
     "serverless-http": "^3.2.0",
     "supertest": "^7.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }
