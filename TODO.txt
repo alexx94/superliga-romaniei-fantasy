@@ -120,6 +120,11 @@ statisticile jucatorilor din Superliga Romaniei
   Am modificat partea de UI/UX sa modifice tabelul dupa delete player.
   -TODO: Deploy, Refactor la anumite componente.
 
+@ZIUA 15 - part 2
+  Am facut ca Express sa serveasca continutul cu React, ca sa folosesc SameSite: Strict pentru cookies la token.
+  Am modificat pagina de search sa aiba putin margin intre search bar si tabel.
+  -TODO: Refactor code, make it clean
+
 TODO:
 
 6) Ca functionalitate basic, putin fun, sa adaug asemanator cu un shopping cart, in care adaug 'ones to watch' intr-o pagina,

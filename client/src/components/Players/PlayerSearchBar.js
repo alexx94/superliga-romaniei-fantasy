@@ -6,7 +6,7 @@ export const PlayerSearchBar = ({ searchTerm, setSearchTerm, handleSearch }) => 
     return (
         <form
             onSubmit={handleSearch}
-            className="flex items-center bg-white rounded-full shadow-md p-2 w-full max-w-md"
+            className="flex items-center bg-white rounded-full shadow-md mb-6 p-2 w-full max-w-md"
         >
             <input
                 type="text"

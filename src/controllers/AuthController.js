@@ -59,7 +59,7 @@ export const authController = {
         res.cookie('sb-jwt', access_token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // right now its false cause  there's no production yet
-            sameSite: 'None', // Disabled since I have two different domains, I need to use the same domain to make it work I think
+            sameSite: 'Strict', // Disabled since I have two different domains, I need to use the same domain to make it work I think
             maxAge: 60 * 60 * 1000
         });
 
