@@ -32,11 +32,10 @@ export const createPlayer = async (playerData) => {
         console.error('Create player error: ', err.response?.data || err.message);
         return {};
     }
-    // TODO - POST
 }
 
 export const updatePlayer = async (playerId, playerData) => {
-    console.log('UPDATING JUCATOR...');
+    console.log('UPDATING PLAYER...');
     try {
         const res = await api.put(`/api/players/${playerId}`, playerData);
         return res.data.data || null;
@@ -44,11 +43,15 @@ export const updatePlayer = async (playerId, playerData) => {
         console.error('Update player error: ', err.response?.data || err.message);
         return {};
     }
-    // TODO - Select id, update
 }
 
-export const deletePlayer = async (params = {}) => {
-    console.log('BASE_URL:', BASE_URL);
-
-    // TODO - Select id, delete
+export const deletePlayer = async (playerId) => {
+    console.log('DELETING PLAYER...');
+    try {
+        const res = await api.delete(`/api/players/${playerId}`);
+        return res.data.data || null;
+    } catch (err) {
+        console.error('Deleting player error: ', err.message?.data || err.message);
+        return {};
+    }
 }

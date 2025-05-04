@@ -114,6 +114,11 @@ statisticile jucatorilor din Superliga Romaniei
   - TODO: Deploy
   - Refactor la niste componente, cea de Edit si putin pe partea de form pentru player, ca sa fie mai simple de citit,
     mai reutilizabile etc.
+  
+@ZIUA 15 - 04/05/2025
+  Am adaugat handleConfirmDelete, am conectat la backend butonul Delete ca sa mearga bine.
+  Am modificat partea de UI/UX sa modifice tabelul dupa delete player.
+  -TODO: Deploy, Refactor la anumite componente.
 
 TODO:
 

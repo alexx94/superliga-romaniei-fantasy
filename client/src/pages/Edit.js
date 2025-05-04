@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getPlayers, updatePlayer } from '../api/PlayerApi';
+import { getPlayers, updatePlayer, deletePlayer } from '../api/PlayerApi';
 import { PlayerSearchBar } from '../components/Players/PlayerSearchBar';
 import { usePlayerSearch } from '../hooks/usePlayerSearch';
 import { CustomButton } from '../components/Buttons/CustomButton';
@@ -30,9 +30,20 @@ const Edit = () => {
     setDeleteModalOpen(true);
   }
 
-  const handleConfirmDelete = () => {
-    console.log(`Player ${playerToDelete?.player} deleted`);
-    // TODO: Trigger delete api and provide player.id;
+  const handleConfirmDelete = async () => {
+    
+    let data;
+    if (playerToDelete != null) {
+      data = await deletePlayer(playerToDelete.id);
+      if (data) {
+        console.log(`Player ${playerToDelete?.player} deleted`);
+        setPlayers((prevPlayers) => prevPlayers.filter(p => p.id !== playerToDelete.id));
+      } 
+    } 
+    else {
+      console.error('Failed to delete player.');
+    }
+    
     setDeleteModalOpen(false);
   }
 
