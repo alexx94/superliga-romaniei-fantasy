@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express, { application } from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import ServerlessHttp from 'serverless-http'; 
+import ServerlessHttp from 'serverless-http';
 
 //CORS doar daca frontend face request la API de pe un alt domeniu
 const FRONTEND_URL = process.env.FRONTEND_URL;
@@ -31,4 +31,4 @@ app.use('/auth', authRoute);
 //const PORT = process.env.PORT || 5000;
 //app.listen(PORT, () => { console.log(`Server is running on port ${PORT}`); })
 
-export const handler = serverless(app);
+export const handler = ServerlessHttp(app);
