@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import InputField from '../../components/InputField';
 import { login } from '../../api/AuthApi';
 import { useNavigate } from 'react-router-dom';
+import TestAccountModal from '../../components/TestAccountModal';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,17 @@ const Login = () => {
 
   const [errors, setErrors] = useState({});
 
+  const [showTestModal, setShowTestModal] = useState(false); // for the Test Account alert
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const hasSeenModal = sessionStorage.getItem('seenTestModal');
+    if (!hasSeenModal) {
+      setShowTestModal(true);
+      sessionStorage.setItem('seenTestModal', 'true');
+    }
+  }, []);
 
   // Sa fac mai modular, sa separ toate astea intr-un fisier separat, utils, helpers, etc.
   const validate = () => {
@@ -59,6 +70,13 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-900">
+
+      {showTestModal && 
+        <TestAccountModal 
+          onClose={() => setShowTestModal(false)}
+        />
+      }
+      
       <div className="bg-[rgba(0,0,0,0.5)] p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-semibold text-white mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit}>
